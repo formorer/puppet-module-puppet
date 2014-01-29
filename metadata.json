@@ -1,0 +1,17 @@
+{
+  "name": "formorer-puppet",
+  "version": "0.1.0",
+  "summary": "Manage puppet with puppet",
+  "author": "",
+  "description": "",
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt"
+    }
+  ],
+  "types": [],
+  "checksums": {},
+  "source": "",
+  "project_page": "",
+  "license": ""
+}
