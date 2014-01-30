@@ -7,5 +7,8 @@ class puppet::client (
   $listen = $puppet::params::listen
   )
 {
+    Anchor['begin'] ->
+    Class['puppet::install'] ->
+    Anchor['end']
   
 }
