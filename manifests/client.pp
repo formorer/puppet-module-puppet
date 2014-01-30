@@ -9,7 +9,6 @@ class puppet::client inherits puppet
         default => 'no'
     }
 
-    notify { "${run_agent} ${run_agent_param}": }
     augeas { "manage_service" :
         context => "/files/etc/default/puppet",
         changes => [
