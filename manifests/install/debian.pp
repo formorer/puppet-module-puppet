@@ -14,5 +14,5 @@ class puppet::install::debian inherits puppet {
     
     Apt::Key['puppetlabs'] -> Apt::Source['puppetlabs'] -> Package['puppet']
   }
-  ensure_packages([ 'puppet', 'libaugeas-ruby' ]);
+  ensure_packages([ 'puppet', 'libaugeas-ruby' ]
 }
