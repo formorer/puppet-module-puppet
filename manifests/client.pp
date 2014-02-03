@@ -13,7 +13,8 @@ class puppet::client inherits puppet
         context => "/files/etc/default/puppet",
         changes => [
             "set START ${run_agent_param}"
-            ]
+            ],
+        notify => Exec["reload-puppet"]
     }
 
     $run_agent_service = $run_agent ? {
@@ -34,7 +35,8 @@ class puppet::client inherits puppet
             context => "/files/etc/puppet/puppet.conf",
             changes => [
                 "set agent/server ${master}",
-            ]
+            ],
+            notify => Exec["reload-puppet"]
         }
     }
 
@@ -43,7 +45,8 @@ class puppet::client inherits puppet
             context => "/files/etc/puppet/puppet.conf",
             changes => [
                 "set agent/listen ${listen}"
-            ]
+            ],
+            notify => Exec["reload-puppet"]
         }
     }
 
@@ -52,9 +55,13 @@ class puppet::client inherits puppet
             context => "/files/etc/puppet/puppet.conf",
             changes => [
                 "set agent/environment ${environment}",
-            ]
+            ],
+            notify => Exec["reload-puppet"]
         }
     }
 
-
+    exec { "reload-puppet":
+        command => '/usr/sbin/service force-reload puppet',
+        refreshonly => true,
+    }
 }
