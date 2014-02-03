@@ -61,7 +61,7 @@ class puppet::client inherits puppet
     }
 
     exec { "reload-puppet":
-        command => '/usr/sbin/service force-reload puppet',
+        command => '/usr/sbin/service puppet force-reload',
         refreshonly => true,
     }
 }
