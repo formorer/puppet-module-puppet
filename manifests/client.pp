@@ -38,6 +38,15 @@ class puppet::client inherits puppet
         }
     }
 
+    if $listen {
+        augeas { "puppet_listen":
+            context => "/files/etc/puppet/puppet.conf",
+            changes => [
+                "set agent/listen ${listen}"
+            ]
+        }
+    }
+
     if $environment {
      augeas { "puppet_environment":
             context => "/files/etc/puppet/puppet.conf",
