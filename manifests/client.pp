@@ -48,6 +48,14 @@ class puppet::client inherits puppet
             ],
             notify => Exec["reload-puppet"]
         }
+    } else {
+               augeas { "puppet_listen":
+            context => "/files/etc/puppet/puppet.conf",
+            changes => [
+                "set agent/listen false"
+            ],
+            notify => Exec["reload-puppet"]
+        }
     }
 
     if $environment {
